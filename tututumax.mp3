@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Пілоти Red Bull Racing сезону 2026 — Ферстаппен та Хаджар">
+    <meta name="keywords" content="Ферстаппен, Хаджар, пілоти, Red Bull, F1">
+    <meta name="author" content="Коцарєв М., ПЗПІ-25-3">
+    <title>Red Bull Racing — Команда</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .team-highlight {
+            color: #ffd700;
+            font-weight: 700;
+        }
+
+        .media-section h2 {
+            border-bottom-color: #ffd700;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Red Bull Racing</h1>
+        <p>Пілоти та досягнення команди</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Головна</a></li>
+            <li class="dropdown">
+                <a href="team.html" class="active">Команда ▾</a>
+                <ul class="dropdown-menu">
+                    <li><a href="team.html#pilots">Пілоти 2026</a></li>
+                    <li><a href="team.html#media">Медіа та радіо</a></li>
+                </ul>
+            </li>
+            <li><a href="motorsport.html">Екстрім</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <!--пілоти-->
+        <section id="pilots">
+            <h2>Пілоти сезону 2026</h2>
+            <div class="drivers">
+                <div class="driver-card">
+                    <img class="driver-photo" src="img/max.jpg" alt="Фото Макса Ферстаппена" width="120" height="120">
+                    <div class="number">#1</div>
+                    <h3>Макс Ферстаппен</h3>
+                    <p>Нідерланди</p>
+                    <p>4-разовий чемпіон світу</p>
+                    <h6>Виступає з 2016 року</h6>
+                </div>
+                <div class="driver-card">
+                    <img class="driver-photo" src="img/isack.jpg" alt="Фото Айзека Хаджара" width="120" height="120">
+                    <div class="number">#35</div>
+                    <h3>Айзек Хаджар</h3>
+                    <p>Франція</p>
+                    <p>Дебютний сезон у Ф1</p>
+                    <h6>Випускник Red Bull Junior Team</h6>
+                </div>
+            </div>
+
+            <h5>Додаткова інформація</h5>
+            <p>Обидва пілоти пройшли підготовку в <span class="team-highlight">програмі розвитку Red Bull</span>.
+                Ферстаппен є найтитулованішим діючим пілотом чемпіонату, а Хаджар — <em>найперспективнішим</em> новачком
+                сезону.</p>
+        </section>
+
+        <!--медіа-->
+        <section id="media" class="media-section">
+            <h2>Медіа:</h2>
+
+            <h3>Едіт про Red Bull Racing</h3>
+            <div class="video-block">
+                <video controls width="100%">
+                    <source src="vid/RBedit.mp4" type="video/mp4">
+                    Ваш браузер не підтримує відтворення відео.
+                </video>
+            </div>
+
+            <h3>Четверте чемпіонство Макса Ферстаппена</h3>
+            <div class="iframe-block">
+                <iframe src="https://www.youtube.com/embed/RkpQvhg-IWw?si=TJzX--grKov_Iaqq"
+                    title="Red Bull Racing Video"
+                    allow="accelerometer; autoplay; cliboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
+        </section>
+
+        <!--аудіо-->
+        <section>
+            <h2>Музика Макса Ферстаппена</h2>
+            <div class="audio-block">
+                <audio controls>
+                    <source src="audio/tututumax.mp3" type="audio/mpeg">
+                    Ваш браузер не підтримує відтворення аудіо.
+                </audio>
+            </div>
+            <div class="radio-transcript">
+                Tu Tu Tu Tu Max Verstappen.
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Software Engineering NURE. Виконав: Коцарєв.М | ПЗПІ-25-3</p>
+    </footer>
+
+</body>
+
+</html>

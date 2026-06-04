@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Red Bull у світі екстремального спорту — WRC, MotoGP, Дакар, Cliff Diving, Drift Masters">
+    <meta name="keywords" content="Red Bull, екстрім, WRC, MotoGP, Дакар, Cliff Diving, дрифт">
+    <meta name="author" content="Коцарєв М., ПЗПІ-25-3">
+    <title>Red Bull Racing — Спорт та Екстрім</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Red Bull Racing</h1>
+        <p>Філософія швидкості далеко за межами Формули-1</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Головна</a></li>
+            <li class="dropdown">
+                <a href="team.html">Команда ▾</a>
+                <ul class="dropdown-menu">
+                    <li><a href="team.html#pilots">Пілоти 2026</a></li>
+                    <li><a href="team.html#media">Медіа та радіо</a></li>
+                </ul>
+            </li>
+            <li><a href="motorsport.html" class="active">Екстрім</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section>
+            <h2>Більше ніж Формула-1</h2>
+            <p style="font-size: 1.05em; color: #ffd700;">Філософія Red Bull виходить далеко за межі гоночних трас Формули-1.</p>
+            <p>Компанія підтримує десятки спортивних проєктів по всьому світу — від класичного автоспорту та мотогонок до <strong>екстремальних шоу</strong>, що захоплюють мільйони глядачів. Бренд <em>«дає крила»</em> у буквальному сенсі.</p>
+        </section>
+
+        <!--Автоспорт та мотоспорт-->
+        <section>
+            <h2>Автоспорт та мотоспорт</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <span class="tag">Ралі</span>
+                    <h3>WRC — Чемпіонат світу з ралі</h3>
+                    <p>Гонки на ґрунтових, снігових та асфальтових трасах у найекстремальніших умовах. Red Bull спонсорує провідних раллістів чемпіонату.</p>
+                    <p><a href="https://www.wrc.com" target="_blank" rel="noopener">wrc.com ↗</a></p>
+                </div>
+                <div class="card">
+                    <span class="tag">Мото</span>
+                    <h3>MotoGP</h3>
+                    <p>Найшвидший мотоциклетний чемпіонат планети. Команда Red Bull KTM є однією з головних сил у пелотоні MotoGP.</p>
+                    <p><a href="https://www.motogp.com" target="_blank" rel="noopener">motogp.com ↗</a></p>
+                </div>
+                <div class="card">
+                    <span class="tag">Офроуд</span>
+                    <h3>Ралі Дакар</h3>
+                    <p>Легендарний марафон через пустелі та гори. Red Bull підтримує учасників у категоріях автомобілів, мотоциклів та вантажівок.</p>
+                    <p><a href="https://www.dakar.com" target="_blank" rel="noopener">dakar.com ↗</a></p>
+                </div>
+            </div>
+        </section>
+
+        <!--Екстремальні події-->
+        <section>
+            <h2>Екстремальні події</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <span class="tag">Дайвінг</span>
+                    <h3>Red Bull Cliff Diving</h3>
+                    <p>Серія змагань зі стрибків у воду з висоти до 27 метрів. Атлети виконують акробатичні елементи над мальовничими скелями по всьому світу.</p>
+                </div>
+                <div class="card">
+                    <span class="tag">Дрифт</span>
+                    <h3>Drift Masters</h3>
+                    <p>Європейський чемпіонат з дрифту, де пілоти змагаються у контрольованих заносах на потужних задньопривідних автомобілях.</p>
+                </div>
+            </div>
+        </section>
+
+        <!--анкета фаната-->
+        <section>
+            <h2>Анкета фаната Red Bull</h2>
+            <p>Залиште свої дані, щоб отримувати новини команди та запрошення на заходи.</p>
+
+            <div class="form-card">
+                <form action="#" method="post">
+                    <div class="form-group">
+                        <label for="fan-name">Ім'я та прізвище:</label>
+                        <input type="text" id="fan-name" name="name" placeholder="Іван Петренко" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fan-email">Електронна пошта:</label>
+                        <input type="email" id="fan-email" name="email" placeholder="ivan@example.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fan-tel">Телефон:</label>
+                        <input type="tel" id="fan-tel" name="phone" placeholder="+380501234567" pattern="\+?[0-9]{10,15}">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fan-url">Ваш профіль у соцмережі:</label>
+                        <input type="url" id="fan-url" name="social" placeholder="https://instagram.com/username">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fan-event">Бажана дата візиту на Гран-прі:</label>
+                        <input type="datetime-local" id="fan-event" name="event_date">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fan-driver">Улюблений пілот:</label>
+                        <select id="fan-driver" name="driver">
+                            <option value="verstappen">Макс Ферстаппен</option>
+                            <option value="hadjar">Айзек Хаджар</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fan-comment">Коментар:</label>
+                        <textarea id="fan-comment" name="comment" placeholder="Напишіть щось..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Надіслати</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Software Engineering NURE. Виконав: Коцарєв.М | ПЗПІ-25-3</p>
+    </footer>
+
+</body>
+</html>
