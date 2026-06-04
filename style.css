@@ -1,173 +1,576 @@
-<!DOCTYPE html>
-<html lang="uk">
+/*універсальний селектор*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Red Bull Racing — історія, новини та досягнення команди Формули-1 сезону 2026">
-    <meta name="keywords" content="Red Bull Racing, Формула-1, F1 2026, Ферстаппен, Хаджар">
-    <meta name="author" content="Коцарєв М., ПЗПІ-25-3">
-    <title>Red Bull Racing — Головна</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+/*грід лейаут*/
+body {
+    font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+    background-color: #001a30;
+    background-image: url('img/bg-carbon.png');
+    background-repeat: repeat;
+    color: #dde4ef;
+    line-height: 1.7;
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto auto 1fr auto;
+}
 
-<body id="top">
-    <header>
-        <h1>Red Bull Racing</h1>
-        <p>Інформаційний сайт про команду Формули-1 | Сезон 2026</p>
-    </header>
+a {
+    color: #ffd700;
+    text-decoration: none;
+    transition: color 0.25s;
+}
 
-    <nav>
-        <ul>
-            <li><a href="index.html" class="active">Головна</a></li>
-            <li class="dropdown">
-                <a href="team.html">Команда ▾</a>
-                <ul class="dropdown-menu">
-                    <li><a href="team.html#pilots">Пілоти 2026</a></li>
-                    <li><a href="team.html#media">Медіа та радіо</a></li>
-                </ul>
-            </li>
-            <li><a href="motorsport.html">Екстрім</a></li>
-        </ul>
-    </nav>
+a:hover {
+    color: #ffe766;
+}
 
-    <main>
-        <!--історія-->
-        <section>
-            <h2>Історія Red Bull Racing</h2>
-            <img id="hero-img" src="img/rb22.jpg" alt="Болід Red Bull RB22 на трасі" width="650" height="400">
-            <p>Команду <strong>Red Bull Racing</strong> було засновано у 2005 році після придбання компанією
-                <u>Red Bull GmbH</u> команди Jaguar Racing. Штаб-квартира розташована у Мілтон-Кінсі, Великобританія.
-            </p>
-            <p>Під керівництвом <strong>Крістіана Хорнера</strong> команда перетворилась на одну з домінуючих
-                сил у Формулі-1, здобувши безліч перемог та кілька чемпіонських титулів. У 2026 році команда
-                вступає в нову еру з оновленими технічними регламентами.</p>
-        </section>
+/*хідер*/
+header {
+    background: linear-gradient(135deg, #00132a 0%, #002244 100%);
+    padding: 22px 32px;
+    border-bottom: 3px solid #e10600;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+}
 
-        <!--статистика-->
-        <section>
-            <h2>Кубки конструкторів</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Сезон</th>
-                        <th>Позиція</th>
-                        <th>Очки</th>
-                        <th>Перемоги</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>2010</td>
-                        <td>🥇 1-ше місце</td>
-                        <td>498</td>
-                        <td>9</td>
-                    </tr>
-                    <tr>
-                        <td>2011</td>
-                        <td>🥇 1-ше місце</td>
-                        <td>650</td>
-                        <td>12</td>
-                    </tr>
-                    <tr>
-                        <td>2012</td>
-                        <td>🥇 1-ше місце</td>
-                        <td>460</td>
-                        <td>7</td>
-                    </tr>
-                    <tr>
-                        <td>2013</td>
-                        <td>🥇 1-ше місце</td>
-                        <td>596</td>
-                        <td>13</td>
-                    </tr>
-                    <tr>
-                        <td>2022</td>
-                        <td>🥇 1-ше місце</td>
-                        <td>759</td>
-                        <td>17</td>
-                    </tr>
-                    <tr>
-                        <td>2023</td>
-                        <td>🥇 1-ше місце</td>
-                        <td>860</td>
-                        <td>21</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
+header h1 {
+    color: #ffd700;
+    font-size: 1.8em;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+    cursor: pointer;
+    text-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
+}
 
-        <!--новини-->
-        <section>
-            <h2>Останні новини</h2>
+header p {
+    font-size: 0.88em;
+    color: #8899aa;
+    margin-top: 4px;
+}
 
-            <article>
-                <h3>Red Bull представив новий болід RB22</h3>
-                <p class="news-date">28 лютого 2026</p>
-                <p>Команда Red Bull Racing провела презентацію нового боліда <strong>RB22</strong>, створеного
-                    відповідно до оновленого технічного регламенту. Інженерна група впевнена у конкурентоспроможності
-                    машини на новий сезон.</p>
-            </article>
+/*навігація*/
+nav {
+    background-color: #001228;
+    padding: 0 32px;
+    border-bottom: 1px solid #0a2a4a;
+    position: relative;
+    z-index: 100;
+}
 
-            <article>
-                <h3>Ферстаппен: «Мета — п'ятий титул»</h3>
-                <p class="news-date">15 березня 2026</p>
-                <p>Макс Ферстаппен заявив в інтерв'ю, що його головна мета — здобути <em>п'ятий титул чемпіона
-                        світу</em> та допомогти команді повернути Кубок конструкторів.</p>
-            </article>
-        </section>
+nav > ul {
+    list-style: none;
+    display: flex;
+    gap: 2px;
+    flex-wrap: wrap;
+}
 
-        <!--хронологія-->
-        <section>
-            <h2>Ключові етапи розвитку</h2>
+nav > ul > li {
+    position: relative;
+}
 
-            <h3>Хронологія успіхів</h3>
-            <ol class="numbered-list">
-                <li>2005–2008 — Становлення команди
-                    <ul>
-                        <li>Придбання Jaguar Racing</li>
-                        <li>Перші сезони та пошук форми</li>
-                        <li>Запрошення Себастьяна Феттеля</li>
-                    </ul>
-                </li>
-                <li>2010–2013 — Ера домінування Феттеля
-                    <ul>
-                        <li>4 поспіль титули чемпіона</li>
-                        <li>4 Кубки конструкторів</li>
-                    </ul>
-                </li>
-                <li>2021–2025 — Ера Ферстаппена
-                    <ul>
-                        <li>Драматичний титул 2021 року</li>
-                        <li>Рекордний сезон 2023: 21 перемога</li>
-                    </ul>
-                </li>
-            </ol>
+nav > ul > li > a {
+    display: block;
+    padding: 14px 24px;
+    color: #8899bb;
+    font-size: 0.93em;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    border-bottom: 3px solid transparent;
+    transition: color 0.25s, border-color 0.3s, background-color 0.25s;
+    cursor: pointer;
+}
 
-            <h4>Швидкі факти</h4>
-            <ul class="content-list">
-                <li>Загалом 6 Кубків конструкторів</li>
-                <li>Понад 120 перемог у Гран-прі</li>
-                <li>Понад 100 поул-позицій</li>
-                <li>Базується у Мілтон-Кінсі, Великобританія</li>
-            </ul>
-        </section>
-        <!--sideBar-->
-        <aside>
-            <h4>Чи знали ви?</h4>
-            <p>У сезоні <strong>2023</strong> року Red Bull Racing встановив абсолютний рекорд Формули-1, здобувши
-                <em>21 перемогу з 22 гонок</em>. Це найдомінантніший сезон в історії чемпіонату.
-            </p>
-            <a href="https://www.redbullracing.com" target="_blank" rel="noopener">Офіційний сайт Red Bull Racing ↗</a>
-        </aside>
+nav > ul > li > a:hover {
+    color: #fff;
+    background-color: rgba(225, 6, 0, 0.12);
+    border-bottom-color: #e10600;
+    text-decoration: none;
+}
 
-        <a href="#top" class="back-to-top">⬆ Наверх</a>
-    </main>
+nav > ul > li > a.active {
+    color: #fff;
+    border-bottom-color: #ffd700;
+    background-color: rgba(255, 215, 0, 0.08);
+    text-decoration: none;
+}
 
-    <footer>
-        <p>&copy; 2026 Software Engineering NURE. Виконав: Коцарєв.М | ПЗПІ-25-3</p>
-    </footer>
+/*випадаюче меню*/
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    list-style: none;
+    background-color: #001835;
+    border: 1px solid #0d3054;
+    border-radius: 0 0 8px 8px;
+    min-width: 220px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
 
-</body>
+.dropdown:hover > .dropdown-menu {
+    display: flex;
+    flex-direction: column;
+}
 
-</html>
+.dropdown-menu li a {
+    display: block;
+    padding: 11px 22px;
+    color: #8899bb;
+    font-size: 0.9em;
+    transition: background-color 0.2s, color 0.2s;
+    border-bottom: 1px solid #0a2540;
+}
+
+.dropdown-menu li:last-child a {
+    border-bottom: none;
+    border-radius: 0 0 8px 8px;
+}
+
+.dropdown-menu li a:hover {
+    background-color: rgba(225, 6, 0, 0.15);
+    color: #fff;
+    text-decoration: none;
+}
+
+/*мейн*/
+main {
+    max-width: 960px;
+    width: 100%;
+    margin: 32px auto;
+    padding: 0 20px;
+}
+
+/*секції */
+section {
+    background: linear-gradient(145deg, rgba(0, 30, 58, 0.92) 0%, rgba(0, 18, 40, 0.96) 100%);
+    border: 1px solid #0d3054;
+    border-radius: 10px;
+    padding: 26px 30px;
+    margin-bottom: 26px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+    transition: transform 0.25s, box-shadow 0.25s;
+}
+
+section:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.5);
+}
+
+/*заголовки*/
+h2 {
+    color: #ffd700;
+    margin-bottom: 14px;
+    font-size: 1.35em;
+    font-weight: 700;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #e10600;
+    display: inline-block;
+    text-shadow: 0 1px 4px rgba(255, 215, 0, 0.2);
+}
+
+h3 {
+    color: #e10600;
+    margin: 14px 0 6px;
+    font-size: 1.08em;
+    font-weight: 600;
+}
+
+h4 {
+    color: #ffd700;
+    font-size: 1em;
+    margin-bottom: 8px;
+}
+
+h5 {
+    color: #ccdae8;
+    font-size: 0.95em;
+    margin: 12px 0 6px;
+}
+
+h6 {
+    color: #7a90a8;
+    font-size: 0.85em;
+    font-weight: 500;
+    margin: 10px 0 4px;
+}
+
+p {
+    margin-bottom: 10px;
+}
+
+/*таблиця*/
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 14px;
+}
+
+th, td {
+    border: 1px solid #0d3054;
+    padding: 12px 16px;
+    text-align: left;
+    font-size: 0.94em;
+}
+
+th {
+    background: linear-gradient(135deg, #e10600, #b00500);
+    color: #fff;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.82em;
+    letter-spacing: 0.6px;
+}
+tr:nth-child(even) {
+    background-color: rgba(0, 30, 60, 0.6);
+}
+
+tr:hover {
+    background-color: rgba(225, 6, 0, 0.1);
+}
+
+/*списки*/
+ul.content-list {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 10px;
+}
+
+ul.content-list li {
+    padding: 6px 0 6px 20px;
+    margin-bottom: 4px;
+    position: relative;
+}
+
+ul.content-list li::before {
+    content: '▸';
+    color: #e10600;
+    position: absolute;
+    left: 0;
+    font-weight: 700;
+}
+
+ol.numbered-list {
+    padding-left: 24px;
+    margin-top: 10px;
+}
+
+ol.numbered-list li {
+    margin-bottom: 8px;
+    color: #dde4ef;
+}
+
+ol.numbered-list ul {
+    list-style: disc;
+    padding-left: 22px;
+    margin-top: 6px;
+}
+
+ol.numbered-list ul li {
+    margin-bottom: 4px;
+    color: #aabbcc;
+}
+
+/*картки пілотів*/
+.drivers {
+    display: flex;
+    gap: 24px;
+    margin-top: 18px;
+}
+
+.driver-card {
+    flex: 1;
+    background: linear-gradient(160deg, #002244 0%, #001530 100%);
+    border: 1px solid #0d3054;
+    border-radius: 10px;
+    padding: 24px;
+    text-align: center;
+    box-shadow: 0 3px 14px rgba(0, 0, 0, 0.3);
+    transition: border-color 0.3s, transform 0.25s, box-shadow 0.25s;
+    cursor: default;
+}
+
+.driver-card:hover {
+    border-color: #e10600;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(225, 6, 0, 0.18);
+}
+
+.driver-card h3 {
+    margin-bottom: 8px;
+    color: #fff;
+    font-size: 1.1em;
+}
+
+.driver-card .number {
+    font-size: 2.4em;
+    font-weight: 800;
+    color: #ffd700;
+    margin-bottom: 8px;
+    text-shadow: 0 2px 10px rgba(255, 215, 0, 0.25);
+}
+
+.driver-card p {
+    color: #8899bb;
+    margin-bottom: 4px;
+    font-size: 0.92em;
+}
+
+/*фото пілотів*/
+.driver-photo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto 14px;
+    border: 3px solid #ffd700;
+    box-shadow: 0 4px 16px rgba(255, 215, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.driver-photo:hover {
+    transform: scale(1.06);
+    box-shadow: 0 6px 22px rgba(255, 215, 0, 0.35);
+}
+
+/*сітка карток спорт*/
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+    margin-top: 16px;
+}
+
+.card {
+    background: linear-gradient(160deg, #002244 0%, #001530 100%);
+    border: 1px solid #0d3054;
+    border-radius: 10px;
+    padding: 22px;
+    box-shadow: 0 3px 14px rgba(0, 0, 0, 0.3);
+    transition: border-color 0.3s, transform 0.25s, box-shadow 0.25s;
+}
+
+.card:hover {
+    border-color: #ffd700;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 22px rgba(255, 215, 0, 0.1);
+}
+
+.card h3 {
+    color: #ffd700;
+    margin-bottom: 8px;
+    font-size: 1.05em;
+}
+
+.card p {
+    color: #99aabb;
+    font-size: 0.92em;
+}
+
+.card .tag {
+    display: inline-block;
+    background-color: #e10600;
+    color: #fff;
+    font-size: 0.72em;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+}
+
+/*медіа + фрейм */
+.video-block {
+    margin-top: 14px;
+}
+
+.video-block video {
+    width: 100%;
+    max-width: 720px;
+    border-radius: 8px;
+    border: 1px solid #0d3054;
+    background-color: #000d1a;
+    display: block;
+}
+
+.iframe-block {
+    margin-top: 16px;
+}
+
+.iframe-block iframe {
+    width: 100%;
+    max-width: 720px;
+    height: 400px;
+    border: 1px solid #0d3054;
+    border-radius: 8px;
+    display: block;
+}
+
+/*аудіо*/
+.audio-block {
+    margin-top: 14px;
+}
+
+.audio-block audio {
+    width: 100%;
+    max-width: 480px;
+    display: block;
+    margin-bottom: 14px;
+}
+
+/*підпис до аудіо*/
+.radio-transcript {
+    background: linear-gradient(160deg, #002244 0%, #001530 100%);
+    border-left: 4px solid #ffd700;
+    border-radius: 0 8px 8px 0;
+    padding: 18px 22px;
+    margin-top: 12px;
+    font-style: italic;
+    color: #8899bb;
+    font-size: 0.93em;
+    line-height: 1.65;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.radio-transcript::before {
+    content: '🎙️ ';
+}
+
+/*sideBar*/
+aside {
+    background: linear-gradient(145deg, rgba(0, 35, 65, 0.85) 0%, rgba(0, 22, 48, 0.92) 100%);
+    border: 1px solid #0d3054;
+    border-left: 4px solid #ffd700;
+    border-radius: 10px;
+    padding: 22px 26px;
+    margin-bottom: 26px;
+    box-shadow: 0 3px 14px rgba(0, 0, 0, 0.3);
+}
+
+aside h4 {
+    color: #ffd700;
+    margin-bottom: 10px;
+}
+
+/*зображення*/
+#hero-img {
+    width: 100%;
+    max-width: 720px;
+    border-radius: 8px;
+    border: 1px solid #0d3054;
+    display: block;
+    margin: 14px 0;
+    opacity: 0.92;
+    transition: opacity 0.3s;
+}
+
+#hero-img:hover {
+    opacity: 1;
+}
+
+/*новини*/
+.news-date {
+    font-size: 0.8em;
+    color: #5577aa;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+/*кнопка нагору*/
+.back-to-top {
+    display: inline-block;
+    margin: 20px 0 10px;
+    padding: 10px 22px;
+    background: linear-gradient(135deg, #e10600, #b00500);
+    color: #fff;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.9em;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+}
+
+.back-to-top:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(225, 6, 0, 0.3);
+    color: #fff;
+    text-decoration: none;
+}
+
+/*форма*/
+.form-card {
+    margin-top: 16px;
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #aabbcc;
+    font-size: 0.92em;
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    max-width: 420px;
+    padding: 10px 14px;
+    background-color: #001a35;
+    border: 1px solid #0d3054;
+    border-radius: 6px;
+    color: #dde4ef;
+    font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 0.93em;
+    transition: border-color 0.25s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #ffd700;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.btn-submit {
+    display: inline-block;
+    padding: 12px 32px;
+    background: linear-gradient(135deg, #e10600, #b00500);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.95em;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.25s;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(225, 6, 0, 0.35);
+}
+
+/*футер*/
+footer {
+    background: linear-gradient(135deg, #00132a 0%, #002244 100%);
+    text-align: center;
+    padding: 20px;
+    border-top: 3px solid #e10600;
+    font-size: 0.85em;
+    color: #556677;
+}
