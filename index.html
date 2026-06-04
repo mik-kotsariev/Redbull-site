@@ -12,30 +12,46 @@
 </head>
 
 <body id="top">
+    <!-- Хедер -->
     <header>
         <h1>Red Bull Racing</h1>
         <p>Інформаційний сайт про команду Формули-1 | Сезон 2026</p>
     </header>
 
+    <!-- Checkbox hack для мобільного гамбургер-меню -->
+    <input type="checkbox" id="nav-toggle" class="nav__checkbox">
+    <label for="nav-toggle" class="nav__hamburger" aria-label="Відкрити меню">
+        <span class="nav__hamburger-line"></span>
+    </label>
+
+    <!-- Навігація (БЕМ) -->
     <nav>
-        <ul>
-            <li><a href="index.html" class="active">Головна</a></li>
-            <li class="dropdown">
-                <a href="team.html">Команда ▾</a>
-                <ul class="dropdown-menu">
-                    <li><a href="team.html#pilots">Пілоти 2026</a></li>
-                    <li><a href="team.html#media">Медіа та радіо</a></li>
+        <ul class="nav__list">
+            <li class="nav__item">
+                <a href="index.html" class="nav__link nav__link--active">Головна</a>
+            </li>
+            <li class="nav__item nav__item--dropdown">
+                <a href="team.html" class="nav__link">Команда ▾</a>
+                <ul class="nav__dropdown">
+                    <li><a href="team.html#pilots" class="nav__dropdown-link">Пілоти 2026</a></li>
+                    <li><a href="team.html#media" class="nav__dropdown-link">Медіа та радіо</a></li>
                 </ul>
             </li>
-            <li><a href="motorsport.html">Екстрім</a></li>
+            <li class="nav__item">
+                <a href="motorsport.html" class="nav__link">Екстрім</a>
+            </li>
+            <li class="nav__item">
+                <a href="gallery.html" class="nav__link">Галерея</a>
+            </li>
         </ul>
     </nav>
 
+    <!-- Основний контент -->
     <main>
         <!--історія-->
-        <section>
+        <section class="section">
             <h2>Історія Red Bull Racing</h2>
-            <img id="hero-img" src="img/rb22.jpg" alt="Болід Red Bull RB22 на трасі" width="650" height="400">
+            <img class="hero-img" src="img/rb22.jpg" alt="Болід Red Bull RB22 на трасі" width="650" height="400">
             <p>Команду <strong>Red Bull Racing</strong> було засновано у 2005 році після придбання компанією
                 <u>Red Bull GmbH</u> команди Jaguar Racing. Штаб-квартира розташована у Мілтон-Кінсі, Великобританія.
             </p>
@@ -45,7 +61,7 @@
         </section>
 
         <!--статистика-->
-        <section>
+        <section class="section">
             <h2>Кубки конструкторів</h2>
             <table>
                 <thead>
@@ -98,12 +114,12 @@
         </section>
 
         <!--новини-->
-        <section>
+        <section class="section">
             <h2>Останні новини</h2>
 
             <article>
                 <h3>Red Bull представив новий болід RB22</h3>
-                <p class="news-date">28 лютого 2026</p>
+                <p class="news__date">28 лютого 2026</p>
                 <p>Команда Red Bull Racing провела презентацію нового боліда <strong>RB22</strong>, створеного
                     відповідно до оновленого технічного регламенту. Інженерна група впевнена у конкурентоспроможності
                     машини на новий сезон.</p>
@@ -111,18 +127,18 @@
 
             <article>
                 <h3>Ферстаппен: «Мета — п'ятий титул»</h3>
-                <p class="news-date">15 березня 2026</p>
+                <p class="news__date">15 березня 2026</p>
                 <p>Макс Ферстаппен заявив в інтерв'ю, що його головна мета — здобути <em>п'ятий титул чемпіона
                         світу</em> та допомогти команді повернути Кубок конструкторів.</p>
             </article>
         </section>
 
         <!--хронологія-->
-        <section>
+        <section class="section">
             <h2>Ключові етапи розвитку</h2>
 
             <h3>Хронологія успіхів</h3>
-            <ol class="numbered-list">
+            <ol class="list--ordered">
                 <li>2005–2008 — Становлення команди
                     <ul>
                         <li>Придбання Jaguar Racing</li>
@@ -145,15 +161,16 @@
             </ol>
 
             <h4>Швидкі факти</h4>
-            <ul class="content-list">
+            <ul class="list--markers">
                 <li>Загалом 6 Кубків конструкторів</li>
                 <li>Понад 120 перемог у Гран-прі</li>
                 <li>Понад 100 поул-позицій</li>
                 <li>Базується у Мілтон-Кінсі, Великобританія</li>
             </ul>
         </section>
+
         <!--sideBar-->
-        <aside>
+        <aside class="sidebar">
             <h4>Чи знали ви?</h4>
             <p>У сезоні <strong>2023</strong> року Red Bull Racing встановив абсолютний рекорд Формули-1, здобувши
                 <em>21 перемогу з 22 гонок</em>. Це найдомінантніший сезон в історії чемпіонату.
@@ -161,11 +178,14 @@
             <a href="https://www.redbullracing.com" target="_blank" rel="noopener">Офіційний сайт Red Bull Racing ↗</a>
         </aside>
 
-        <a href="#top" class="back-to-top">⬆ Наверх</a>
     </main>
 
+    <!-- Фіксована кнопка «Підтримати команду» -->
+    <a href="#" class="support-btn">⬆Нагору</a>
+
+    <!-- Футер -->
     <footer>
-        <p>&copy; 2026 Software Engineering NURE. Виконав: Коцарєв.М | ПЗПІ-25-3</p>
+        <p>&copy; 2026 Software Engineering NURE. Виконав: Коцарєв М. | ПЗПІ-25-3</p>
     </footer>
 
 </body>

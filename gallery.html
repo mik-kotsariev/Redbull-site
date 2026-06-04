@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Галерея болида RB22 та пілотів Red Bull Racing сезону 2026">
+    <meta name="keywords" content="Red Bull Racing, RB22, галерея, фото, Формула-1, 2026">
+    <meta name="author" content="Коцарєв М., ПЗПІ-25-3">
+    <title>Red Bull Racing — Галерея</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Хедер -->
+    <header>
+        <h1>Red Bull Racing</h1>
+        <p>Галерея болида RB22 та пілотів | Сезон 2026</p>
+    </header>
+
+    <!-- Checkbox hack для мобільного гамбургер-меню -->
+    <input type="checkbox" id="nav-toggle" class="nav__checkbox">
+    <label for="nav-toggle" class="nav__hamburger" aria-label="Відкрити меню">
+        <span class="nav__hamburger-line"></span>
+    </label>
+
+    <!-- Навігація (БЕМ) -->
+    <nav>
+        <ul class="nav__list">
+            <li class="nav__item">
+                <a href="index.html" class="nav__link">Головна</a>
+            </li>
+            <li class="nav__item nav__item--dropdown">
+                <a href="team.html" class="nav__link">Команда ▾</a>
+                <ul class="nav__dropdown">
+                    <li><a href="team.html#pilots" class="nav__dropdown-link">Пілоти 2026</a></li>
+                    <li><a href="team.html#media" class="nav__dropdown-link">Медіа та радіо</a></li>
+                </ul>
+            </li>
+            <li class="nav__item">
+                <a href="motorsport.html" class="nav__link">Екстрім</a>
+            </li>
+            <li class="nav__item">
+                <a href="gallery.html" class="nav__link nav__link--active">Галерея</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Основний контент -->
+    <main>
+        <!-- Вступ до галереї -->
+        <section class="section">
+            <h2>Фотогалерея Red Bull Racing 2026</h2>
+            <p>Ексклюзивні фотографії болида <strong>RB22</strong>, пілотів та найяскравіших моментів сезону.
+                Наведіть курсор на зображення, щоб побачити його у повному кольорі.</p>
+        </section>
+
+        <!-- Галерея зображень з CSS Grid (grid-template-areas) -->
+        <section class="section">
+            <div class="gallery">
+                <!-- Заголовок галереї (займає весь перший рядок) -->
+                <h3 class="gallery__title">🏎️ Болід та команда</h3>
+
+                <!-- Фото 1: Болід RB22 на трасі (наявне) -->
+                <div class="gallery__item">
+                    <img class="gallery__img" src="img/rb22.jpg" alt="Болід Red Bull RB22 на трасі" loading="lazy">
+                    <span class="gallery__caption">RB22 на трасі</span>
+                </div>
+
+                <!-- Фото 2: Макс Ферстаппен (наявне) -->
+                <div class="gallery__item">
+                    <img class="gallery__img" src="img/max.jpg" alt="Макс Ферстаппен — пілот Red Bull Racing" loading="lazy">
+                    <span class="gallery__caption">Макс Ферстаппен #1</span>
+                </div>
+
+                <!-- Фото 3: Айзек Хаджар (наявне) -->
+                <div class="gallery__item">
+                    <img class="gallery__img" src="img/isack.jpg" alt="Айзек Хаджар — пілот Red Bull Racing" loading="lazy">
+                    <span class="gallery__caption">Айзек Хаджар #35</span>
+                </div>
+
+                <!-- Фото 4: Болід RB22 вигляд збоку (згенероване) -->
+                <div class="gallery__item">
+                    <img class="gallery__img" src="img/rb22_side.png" alt="Red Bull RB22 — вигляд збоку" loading="lazy">
+                    <span class="gallery__caption">RB22 — бічний ракурс</span>
+                </div>
+
+                <!-- Фото 5: Піт-стоп Red Bull (згенероване) -->
+                <div class="gallery__item">
+                    <img class="gallery__img" src="img/rb_pitstop.png" alt="Піт-стоп Red Bull Racing" loading="lazy">
+                    <span class="gallery__caption">Блискавичний піт-стоп</span>
+                </div>
+
+                <!-- Фото 6: Командне фото (згенероване) -->
+                <div class="gallery__item">
+                    <img class="gallery__img" src="img/rb_team.png" alt="Команда Red Bull Racing святкує перемогу" loading="lazy">
+                    <span class="gallery__caption">Перемога команди</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Інформація про болід -->
+        <section class="section">
+            <h2>Технічні характеристики RB22</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Параметр</th>
+                        <th>Значення</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Двигун</td>
+                        <td>Ford / Red Bull Powertrains 1.6L V6 Turbo Hybrid</td>
+                    </tr>
+                    <tr>
+                        <td>Потужність</td>
+                        <td>~1000 к.с. (з електричною системою)</td>
+                    </tr>
+                    <tr>
+                        <td>Маса</td>
+                        <td>768 кг (мінімальна з пілотом)</td>
+                    </tr>
+                    <tr>
+                        <td>Коробка передач</td>
+                        <td>8-ступінчаста напівавтоматична</td>
+                    </tr>
+                    <tr>
+                        <td>Максимальна швидкість</td>
+                        <td>~370 км/год</td>
+                    </tr>
+                    <tr>
+                        <td>Шасі</td>
+                        <td>Карбонове монококове</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <!-- Фіксована кнопка «Підтримати команду» -->
+    <a href="#" class="support-btn">🏁 Підтримати команду</a>
+
+    <!-- Футер -->
+    <footer>
+        <p>&copy; 2026 Software Engineering NURE. Виконав: Коцарєв М. | ПЗПІ-25-3</p>
+    </footer>
+
+</body>
+
+</html>

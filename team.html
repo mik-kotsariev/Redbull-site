@@ -9,55 +9,60 @@
     <meta name="author" content="Коцарєв М., ПЗПІ-25-3">
     <title>Red Bull Racing — Команда</title>
     <link rel="stylesheet" href="style.css">
-
-    <style>
-        .team-highlight {
-            color: #ffd700;
-            font-weight: 700;
-        }
-
-        .media-section h2 {
-            border-bottom-color: #ffd700;
-        }
-    </style>
 </head>
 
 <body>
+    <!-- Хедер -->
     <header>
         <h1>Red Bull Racing</h1>
         <p>Пілоти та досягнення команди</p>
     </header>
 
+    <!-- Checkbox hack для мобільного гамбургер-меню -->
+    <input type="checkbox" id="nav-toggle" class="nav__checkbox">
+    <label for="nav-toggle" class="nav__hamburger" aria-label="Відкрити меню">
+        <span class="nav__hamburger-line"></span>
+    </label>
+
+    <!-- Навігація (БЕМ) -->
     <nav>
-        <ul>
-            <li><a href="index.html">Головна</a></li>
-            <li class="dropdown">
-                <a href="team.html" class="active">Команда ▾</a>
-                <ul class="dropdown-menu">
-                    <li><a href="team.html#pilots">Пілоти 2026</a></li>
-                    <li><a href="team.html#media">Медіа та радіо</a></li>
+        <ul class="nav__list">
+            <li class="nav__item">
+                <a href="index.html" class="nav__link">Головна</a>
+            </li>
+            <li class="nav__item nav__item--dropdown">
+                <a href="team.html" class="nav__link nav__link--active">Команда ▾</a>
+                <ul class="nav__dropdown">
+                    <li><a href="team.html#pilots" class="nav__dropdown-link">Пілоти 2026</a></li>
+                    <li><a href="team.html#media" class="nav__dropdown-link">Медіа та радіо</a></li>
                 </ul>
             </li>
-            <li><a href="motorsport.html">Екстрім</a></li>
+            <li class="nav__item">
+                <a href="motorsport.html" class="nav__link">Екстрім</a>
+            </li>
+            <li class="nav__item">
+                <a href="gallery.html" class="nav__link">Галерея</a>
+            </li>
         </ul>
     </nav>
 
+    <!-- Основний контент -->
     <main>
         <!--пілоти-->
-        <section id="pilots">
+        <section id="pilots" class="section">
             <h2>Пілоти сезону 2026</h2>
-            <div class="drivers">
-                <div class="driver-card">
-                    <img class="driver-photo" src="img/max.jpg" alt="Фото Макса Ферстаппена" width="120" height="120">
-                    <div class="number">#1</div>
+            <div class="pilot__grid">
+                <div class="pilot__card">
+                    <img class="pilot__photo" src="img/max.jpg" alt="Фото Макса Ферстаппена" width="120" height="120">
+                    <div class="pilot__number">#1</div>
                     <h3>Макс Ферстаппен</h3>
                     <p>Нідерланди</p>
                     <p>4-разовий чемпіон світу</p>
                     <h6>Виступає з 2016 року</h6>
                 </div>
-                <div class="driver-card">
-                    <img class="driver-photo" src="img/isack.jpg" alt="Фото Айзека Хаджара" width="120" height="120">
-                    <div class="number">#35</div>
+                <div class="pilot__card">
+                    <img class="pilot__photo" src="img/isack.jpg" alt="Фото Айзека Хаджара" width="120" height="120">
+                    <div class="pilot__number">#35</div>
                     <h3>Айзек Хаджар</h3>
                     <p>Франція</p>
                     <p>Дебютний сезон у Ф1</p>
@@ -66,17 +71,17 @@
             </div>
 
             <h5>Додаткова інформація</h5>
-            <p>Обидва пілоти пройшли підготовку в <span class="team-highlight">програмі розвитку Red Bull</span>.
+            <p>Обидва пілоти пройшли підготовку в <span class="text--highlight">програмі розвитку Red Bull</span>.
                 Ферстаппен є найтитулованішим діючим пілотом чемпіонату, а Хаджар — <em>найперспективнішим</em> новачком
                 сезону.</p>
         </section>
 
         <!--медіа-->
-        <section id="media" class="media-section">
+        <section id="media" class="section section--media">
             <h2>Медіа:</h2>
 
             <h3>Едіт про Red Bull Racing</h3>
-            <div class="video-block">
+            <div class="media__video">
                 <video controls width="100%">
                     <source src="vid/RBedit.mp4" type="video/mp4">
                     Ваш браузер не підтримує відтворення відео.
@@ -84,31 +89,35 @@
             </div>
 
             <h3>Четверте чемпіонство Макса Ферстаппена</h3>
-            <div class="iframe-block">
+            <div class="media__iframe">
                 <iframe src="https://www.youtube.com/embed/RkpQvhg-IWw?si=TJzX--grKov_Iaqq"
                     title="Red Bull Racing Video"
-                    allow="accelerometer; autoplay; cliboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen></iframe>
             </div>
         </section>
 
         <!--аудіо-->
-        <section>
+        <section class="section">
             <h2>Музика Макса Ферстаппена</h2>
-            <div class="audio-block">
+            <div class="media__audio">
                 <audio controls>
                     <source src="audio/tututumax.mp3" type="audio/mpeg">
                     Ваш браузер не підтримує відтворення аудіо.
                 </audio>
             </div>
-            <div class="radio-transcript">
+            <div class="media__transcript">
                 Tu Tu Tu Tu Max Verstappen.
             </div>
         </section>
     </main>
 
+    <!-- Фіксована кнопка «Підтримати команду» -->
+    <a href="#" class="support-btn">🏁 Підтримати команду</a>
+
+    <!-- Футер -->
     <footer>
-        <p>&copy; 2026 Software Engineering NURE. Виконав: Коцарєв.М | ПЗПІ-25-3</p>
+        <p>&copy; 2026 Software Engineering NURE. Виконав: Коцарєв М. | ПЗПІ-25-3</p>
     </footer>
 
 </body>

@@ -1,11 +1,19 @@
-/*універсальний селектор*/
+/* =============================================================
+   Red Bull Racing — Фан-сайт | Сезон 2026
+   Лабораторна робота №2: CSS Grid, БЕМ, адаптивність
+   Автор: Коцарєв М. | ПЗПІ-25-3, ХНУРЕ
+   ============================================================= */
+
+/* ------ UNIVERSAL RESET ------ */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/*грід лейаут*/
+/* ------ CSS GRID: ЗАГАЛЬНИЙ ЛЕЙАУТ СТОРІНКИ ------ */
+/* Тіло документа — основний грід-контейнер з чотирма рядками:
+   header → nav → main → footer */
 body {
     font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
     background-color: #001a30;
@@ -16,8 +24,20 @@ body {
     min-height: 100vh;
     display: grid;
     grid-template-rows: auto auto 1fr auto;
+    grid-template-areas:
+        "header"
+        "nav"
+        "main"
+        "footer";
 }
 
+/* Прив'язка grid-area до семантичних елементів */
+header { grid-area: header; }
+nav    { grid-area: nav; }
+main   { grid-area: main; }
+footer { grid-area: footer; }
+
+/* ------ ПОСИЛАННЯ ------ */
 a {
     color: #ffd700;
     text-decoration: none;
@@ -28,7 +48,9 @@ a:hover {
     color: #ffe766;
 }
 
-/*хідер*/
+/* =============================================================
+   БЛОК: HEADER (header)
+   ============================================================= */
 header {
     background: linear-gradient(135deg, #00132a 0%, #002244 100%);
     padding: 22px 32px;
@@ -36,6 +58,7 @@ header {
     text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
 }
 
+/* БЕМ: header__title */
 header h1 {
     color: #ffd700;
     font-size: 1.8em;
@@ -45,13 +68,67 @@ header h1 {
     text-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
 }
 
+/* БЕМ: header__subtitle */
 header p {
     font-size: 0.88em;
     color: #8899aa;
     margin-top: 4px;
 }
 
-/*навігація*/
+/* =============================================================
+   БЛОК: NAV (nav) — Навігація з гамбургер-меню
+   ============================================================= */
+
+/* -- Checkbox hack: приховуємо справжній чекбокс -- */
+.nav__checkbox {
+    display: none;
+}
+
+/* -- Гамбургер-іконка (3 лінії) — прихована на desktop -- */
+.nav__hamburger {
+    display: none;
+    cursor: pointer;
+    width: 36px;
+    height: 26px;
+    position: relative;
+    z-index: 200;
+}
+
+/* Середня лінія гамбургера */
+.nav__hamburger-line {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #ffd700;
+    border-radius: 2px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: background-color 0.3s;
+}
+
+/* Верхня та нижня лінії через псевдоелементи */
+.nav__hamburger-line::before,
+.nav__hamburger-line::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #ffd700;
+    border-radius: 2px;
+    position: absolute;
+    transition: transform 0.3s, top 0.3s;
+}
+
+.nav__hamburger-line::before {
+    top: -9px;
+}
+
+.nav__hamburger-line::after {
+    top: 9px;
+}
+
+/* -- Основна панель навігації -- */
 nav {
     background-color: #001228;
     padding: 0 32px;
@@ -60,18 +137,21 @@ nav {
     z-index: 100;
 }
 
-nav > ul {
+/* БЕМ: nav__list — головний список посилань */
+.nav__list {
     list-style: none;
     display: flex;
     gap: 2px;
     flex-wrap: wrap;
 }
 
-nav > ul > li {
+/* БЕМ: nav__item */
+.nav__item {
     position: relative;
 }
 
-nav > ul > li > a {
+/* БЕМ: nav__link */
+.nav__link {
     display: block;
     padding: 14px 24px;
     color: #8899bb;
@@ -83,22 +163,24 @@ nav > ul > li > a {
     cursor: pointer;
 }
 
-nav > ul > li > a:hover {
+.nav__link:hover {
     color: #fff;
     background-color: rgba(225, 6, 0, 0.12);
     border-bottom-color: #e10600;
     text-decoration: none;
 }
 
-nav > ul > li > a.active {
+/* БЕМ: nav__link--active (модифікатор активної сторінки) */
+.nav__link--active {
     color: #fff;
     border-bottom-color: #ffd700;
     background-color: rgba(255, 215, 0, 0.08);
     text-decoration: none;
 }
 
-/*випадаюче меню*/
-.dropdown-menu {
+/* -- Випадаюче меню (dropdown) -- */
+/* БЕМ: nav__dropdown */
+.nav__dropdown {
     display: none;
     position: absolute;
     top: 100%;
@@ -109,14 +191,17 @@ nav > ul > li > a.active {
     border-radius: 0 0 8px 8px;
     min-width: 220px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    z-index: 150;
 }
 
-.dropdown:hover > .dropdown-menu {
+/* При наведенні на батьківський nav__item--dropdown */
+.nav__item--dropdown:hover > .nav__dropdown {
     display: flex;
     flex-direction: column;
 }
 
-.dropdown-menu li a {
+/* Посилання всередині dropdown */
+.nav__dropdown-link {
     display: block;
     padding: 11px 22px;
     color: #8899bb;
@@ -125,18 +210,20 @@ nav > ul > li > a.active {
     border-bottom: 1px solid #0a2540;
 }
 
-.dropdown-menu li:last-child a {
+.nav__dropdown li:last-child .nav__dropdown-link {
     border-bottom: none;
     border-radius: 0 0 8px 8px;
 }
 
-.dropdown-menu li a:hover {
+.nav__dropdown-link:hover {
     background-color: rgba(225, 6, 0, 0.15);
     color: #fff;
     text-decoration: none;
 }
 
-/*мейн*/
+/* =============================================================
+   БЛОК: MAIN — основний контент
+   ============================================================= */
 main {
     max-width: 960px;
     width: 100%;
@@ -144,8 +231,10 @@ main {
     padding: 0 20px;
 }
 
-/*секції */
-section {
+/* =============================================================
+   БЛОК: SECTION (section) — секції контенту
+   ============================================================= */
+.section {
     background: linear-gradient(145deg, rgba(0, 30, 58, 0.92) 0%, rgba(0, 18, 40, 0.96) 100%);
     border: 1px solid #0d3054;
     border-radius: 10px;
@@ -155,12 +244,14 @@ section {
     transition: transform 0.25s, box-shadow 0.25s;
 }
 
-section:hover {
+.section:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 28px rgba(0, 0, 0, 0.5);
 }
 
-/*заголовки*/
+/* =============================================================
+   ЗАГОЛОВКИ
+   ============================================================= */
 h2 {
     color: #ffd700;
     margin-bottom: 14px;
@@ -202,7 +293,9 @@ p {
     margin-bottom: 10px;
 }
 
-/*таблиця*/
+/* =============================================================
+   БЛОК: TABLE — таблиця статистики
+   ============================================================= */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -224,6 +317,7 @@ th {
     font-size: 0.82em;
     letter-spacing: 0.6px;
 }
+
 tr:nth-child(even) {
     background-color: rgba(0, 30, 60, 0.6);
 }
@@ -232,20 +326,23 @@ tr:hover {
     background-color: rgba(225, 6, 0, 0.1);
 }
 
-/*списки*/
-ul.content-list {
+/* =============================================================
+   БЛОК: LIST — списки (БЕМ)
+   ============================================================= */
+/* БЕМ: list--markers (маркований список) */
+.list--markers {
     list-style: none;
     padding-left: 0;
     margin-top: 10px;
 }
 
-ul.content-list li {
+.list--markers li {
     padding: 6px 0 6px 20px;
     margin-bottom: 4px;
     position: relative;
 }
 
-ul.content-list li::before {
+.list--markers li::before {
     content: '▸';
     color: #e10600;
     position: absolute;
@@ -253,36 +350,41 @@ ul.content-list li::before {
     font-weight: 700;
 }
 
-ol.numbered-list {
+/* БЕМ: list--ordered (нумерований список) */
+.list--ordered {
     padding-left: 24px;
     margin-top: 10px;
 }
 
-ol.numbered-list li {
+.list--ordered li {
     margin-bottom: 8px;
     color: #dde4ef;
 }
 
-ol.numbered-list ul {
+.list--ordered ul {
     list-style: disc;
     padding-left: 22px;
     margin-top: 6px;
 }
 
-ol.numbered-list ul li {
+.list--ordered ul li {
     margin-bottom: 4px;
     color: #aabbcc;
 }
 
-/*картки пілотів*/
-.drivers {
-    display: flex;
+/* =============================================================
+   БЛОК: PILOT — картки пілотів (CSS Grid)
+   ============================================================= */
+/* БЕМ: pilot__grid — сітка пілотів */
+.pilot__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 24px;
     margin-top: 18px;
 }
 
-.driver-card {
-    flex: 1;
+/* БЕМ: pilot__card — картка пілота */
+.pilot__card {
     background: linear-gradient(160deg, #002244 0%, #001530 100%);
     border: 1px solid #0d3054;
     border-radius: 10px;
@@ -293,19 +395,20 @@ ol.numbered-list ul li {
     cursor: default;
 }
 
-.driver-card:hover {
+.pilot__card:hover {
     border-color: #e10600;
     transform: translateY(-4px);
     box-shadow: 0 8px 24px rgba(225, 6, 0, 0.18);
 }
 
-.driver-card h3 {
+.pilot__card h3 {
     margin-bottom: 8px;
     color: #fff;
     font-size: 1.1em;
 }
 
-.driver-card .number {
+/* БЕМ: pilot__number — номер пілота */
+.pilot__number {
     font-size: 2.4em;
     font-weight: 800;
     color: #ffd700;
@@ -313,14 +416,14 @@ ol.numbered-list ul li {
     text-shadow: 0 2px 10px rgba(255, 215, 0, 0.25);
 }
 
-.driver-card p {
+.pilot__card p {
     color: #8899bb;
     margin-bottom: 4px;
     font-size: 0.92em;
 }
 
-/*фото пілотів*/
-.driver-photo {
+/* БЕМ: pilot__photo — фото пілота */
+.pilot__photo {
     width: 120px;
     height: 120px;
     border-radius: 50%;
@@ -332,20 +435,24 @@ ol.numbered-list ul li {
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.driver-photo:hover {
+.pilot__photo:hover {
     transform: scale(1.06);
     box-shadow: 0 6px 22px rgba(255, 215, 0, 0.35);
 }
 
-/*сітка карток спорт*/
-.cards-grid {
+/* =============================================================
+   БЛОК: CARDS — сітка карток (CSS Grid)
+   ============================================================= */
+/* БЕМ: cards__grid */
+.cards__grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     gap: 20px;
     margin-top: 16px;
 }
 
-.card {
+/* БЕМ: cards__item */
+.cards__item {
     background: linear-gradient(160deg, #002244 0%, #001530 100%);
     border: 1px solid #0d3054;
     border-radius: 10px;
@@ -354,24 +461,25 @@ ol.numbered-list ul li {
     transition: border-color 0.3s, transform 0.25s, box-shadow 0.25s;
 }
 
-.card:hover {
+.cards__item:hover {
     border-color: #ffd700;
     transform: translateY(-3px);
     box-shadow: 0 8px 22px rgba(255, 215, 0, 0.1);
 }
 
-.card h3 {
+.cards__item h3 {
     color: #ffd700;
     margin-bottom: 8px;
     font-size: 1.05em;
 }
 
-.card p {
+.cards__item p {
     color: #99aabb;
     font-size: 0.92em;
 }
 
-.card .tag {
+/* БЕМ: cards__tag — мітка категорії */
+.cards__tag {
     display: inline-block;
     background-color: #e10600;
     color: #fff;
@@ -384,12 +492,15 @@ ol.numbered-list ul li {
     margin-bottom: 10px;
 }
 
-/*медіа + фрейм */
-.video-block {
+/* =============================================================
+   БЛОК: MEDIA — відео, iframe, аудіо
+   ============================================================= */
+/* БЕМ: media__video */
+.media__video {
     margin-top: 14px;
 }
 
-.video-block video {
+.media__video video {
     width: 100%;
     max-width: 720px;
     border-radius: 8px;
@@ -398,11 +509,12 @@ ol.numbered-list ul li {
     display: block;
 }
 
-.iframe-block {
+/* БЕМ: media__iframe */
+.media__iframe {
     margin-top: 16px;
 }
 
-.iframe-block iframe {
+.media__iframe iframe {
     width: 100%;
     max-width: 720px;
     height: 400px;
@@ -411,20 +523,20 @@ ol.numbered-list ul li {
     display: block;
 }
 
-/*аудіо*/
-.audio-block {
+/* БЕМ: media__audio */
+.media__audio {
     margin-top: 14px;
 }
 
-.audio-block audio {
+.media__audio audio {
     width: 100%;
     max-width: 480px;
     display: block;
     margin-bottom: 14px;
 }
 
-/*підпис до аудіо*/
-.radio-transcript {
+/* БЕМ: media__transcript — розшифровка радіо */
+.media__transcript {
     background: linear-gradient(160deg, #002244 0%, #001530 100%);
     border-left: 4px solid #ffd700;
     border-radius: 0 8px 8px 0;
@@ -437,12 +549,25 @@ ol.numbered-list ul li {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
-.radio-transcript::before {
+.media__transcript::before {
     content: '🎙️ ';
 }
 
-/*sideBar*/
-aside {
+/* Модифікатор для секції медіа: зміна кольору підкреслення h2 */
+.section--media h2 {
+    border-bottom-color: #ffd700;
+}
+
+/* Виділення команди (текстовий модифікатор) */
+.text--highlight {
+    color: #ffd700;
+    font-weight: 700;
+}
+
+/* =============================================================
+   БЛОК: SIDEBAR (aside)
+   ============================================================= */
+.sidebar {
     background: linear-gradient(145deg, rgba(0, 35, 65, 0.85) 0%, rgba(0, 22, 48, 0.92) 100%);
     border: 1px solid #0d3054;
     border-left: 4px solid #ffd700;
@@ -452,13 +577,15 @@ aside {
     box-shadow: 0 3px 14px rgba(0, 0, 0, 0.3);
 }
 
-aside h4 {
+.sidebar h4 {
     color: #ffd700;
     margin-bottom: 10px;
 }
 
-/*зображення*/
-#hero-img {
+/* =============================================================
+   БЛОК: HERO-IMG — головне зображення
+   ============================================================= */
+.hero-img {
     width: 100%;
     max-width: 720px;
     border-radius: 8px;
@@ -469,20 +596,26 @@ aside h4 {
     transition: opacity 0.3s;
 }
 
-#hero-img:hover {
+.hero-img:hover {
     opacity: 1;
 }
 
-/*новини*/
-.news-date {
+/* =============================================================
+   БЛОК: NEWS — новини
+   ============================================================= */
+/* БЕМ: news__date */
+.news__date {
     font-size: 0.8em;
     color: #5577aa;
     font-weight: 600;
     margin-bottom: 4px;
 }
 
-/*кнопка нагору*/
-.back-to-top {
+/* =============================================================
+   БЛОК: PAGE — елементи сторінки
+   ============================================================= */
+/* БЕМ: page__back-to-top — кнопка «Наверх» */
+.page__back-to-top {
     display: inline-block;
     margin: 20px 0 10px;
     padding: 10px 22px;
@@ -495,23 +628,27 @@ aside h4 {
     cursor: pointer;
 }
 
-.back-to-top:hover {
+.page__back-to-top:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(225, 6, 0, 0.3);
     color: #fff;
     text-decoration: none;
 }
 
-/*форма*/
-.form-card {
+/* =============================================================
+   БЛОК: FORM — форма (анкета фаната)
+   ============================================================= */
+/* БЕМ: form__card */
+.form__card {
     margin-top: 16px;
 }
 
-.form-group {
+/* БЕМ: form__group */
+.form__group {
     margin-bottom: 16px;
 }
 
-.form-group label {
+.form__group label {
     display: block;
     margin-bottom: 5px;
     color: #aabbcc;
@@ -519,9 +656,9 @@ aside h4 {
     font-weight: 600;
 }
 
-.form-group input,
-.form-group select,
-.form-group textarea {
+.form__group input,
+.form__group select,
+.form__group textarea {
     width: 100%;
     max-width: 420px;
     padding: 10px 14px;
@@ -534,18 +671,19 @@ aside h4 {
     transition: border-color 0.25s;
 }
 
-.form-group input:focus,
-.form-group textarea:focus {
+.form__group input:focus,
+.form__group textarea:focus {
     outline: none;
     border-color: #ffd700;
 }
 
-.form-group textarea {
+.form__group textarea {
     resize: vertical;
     min-height: 80px;
 }
 
-.btn-submit {
+/* БЕМ: form__submit — кнопка надсилання */
+.form__submit {
     display: inline-block;
     padding: 12px 32px;
     background: linear-gradient(135deg, #e10600, #b00500);
@@ -560,12 +698,125 @@ aside h4 {
     letter-spacing: 0.5px;
 }
 
-.btn-submit:hover {
+.form__submit:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 16px rgba(225, 6, 0, 0.35);
 }
 
-/*футер*/
+/* =============================================================
+   БЛОК: SUPPORT — фіксована кнопка «Підтримати команду»
+   ============================================================= */
+.support-btn {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 500;
+    padding: 14px 26px;
+    background: linear-gradient(135deg, #e10600, #b00500);
+    color: #fff;
+    font-size: 0.9em;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-radius: 8px;
+    box-shadow: 0 4px 18px rgba(225, 6, 0, 0.4);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+}
+
+/* Деформація при наведенні: skewX + scale */
+.support-btn:hover {
+    transform: skewX(-8deg) scale(1.1);
+    box-shadow: 0 8px 28px rgba(225, 6, 0, 0.6);
+    color: #fff;
+    text-decoration: none;
+}
+
+/* =============================================================
+   БЛОК: GALLERY — галерея (CSS Grid + анімації)
+   ============================================================= */
+
+/* Контейнер галереї з grid-template-areas */
+.gallery {
+    display: grid;
+    grid-template-areas:
+        "title  title  title"
+        "photo1 photo2 photo3"
+        "photo4 photo5 photo6";
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-top: 18px;
+}
+
+/* Заголовок займає весь рядок */
+.gallery__title {
+    grid-area: title;
+    color: #ffd700;
+    font-size: 1.2em;
+    margin-bottom: 4px;
+}
+
+/* Прив'язка кожного фото до grid-area */
+.gallery__item:nth-child(2) { grid-area: photo1; }
+.gallery__item:nth-child(3) { grid-area: photo2; }
+.gallery__item:nth-child(4) { grid-area: photo3; }
+.gallery__item:nth-child(5) { grid-area: photo4; }
+.gallery__item:nth-child(6) { grid-area: photo5; }
+.gallery__item:nth-child(7) { grid-area: photo6; }
+
+/* БЕМ: gallery__item — одне фото у галереї */
+.gallery__item {
+    overflow: hidden;
+    border-radius: 10px;
+    border: 1px solid #0d3054;
+    box-shadow: 0 3px 14px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    position: relative;
+}
+
+/* БЕМ: gallery__img — зображення */
+.gallery__img {
+    width: 100%;
+    height: 100%;
+    min-height: 200px;
+    object-fit: cover;
+    display: block;
+    /* Початковий стан: чорно-білий фільтр */
+    filter: grayscale(80%);
+    transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+/* Анімація при наведенні: збільшення + насиченість */
+.gallery__item:hover .gallery__img {
+    transform: scale(1.08);
+    filter: grayscale(0%) saturate(1.3);
+}
+
+/* Підпис до фото */
+.gallery__caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 10px 14px;
+    background: linear-gradient(transparent, rgba(0, 13, 26, 0.9));
+    color: #dde4ef;
+    font-size: 0.85em;
+    font-weight: 600;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.gallery__item:hover .gallery__caption {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =============================================================
+   БЛОК: FOOTER
+   ============================================================= */
 footer {
     background: linear-gradient(135deg, #00132a 0%, #002244 100%);
     text-align: center;
@@ -573,4 +824,164 @@ footer {
     border-top: 3px solid #e10600;
     font-size: 0.85em;
     color: #556677;
+}
+
+/* =============================================================
+   АДАПТИВНІСТЬ — @media запити
+   ============================================================= */
+
+/* ---- Планшети та мобільні пристрої (≤ 768px) ---- */
+@media (max-width: 768px) {
+
+    /* -- Гамбургер-меню стає видимим -- */
+    .nav__hamburger {
+        display: block;
+        position: absolute;
+        top: 12px;
+        right: 16px;
+    }
+
+    /* Nav отримує padding для гамбургера */
+    nav {
+        padding: 14px 16px;
+    }
+
+    /* Навігаційний список ховається */
+    .nav__list {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        gap: 0;
+        padding-top: 10px;
+    }
+
+    /* Checkbox hack: коли чекбокс активний — меню показується */
+    .nav__checkbox:checked ~ nav .nav__list {
+        display: flex;
+    }
+
+    /* Анімація гамбургера у хрестик при відкритті */
+    .nav__checkbox:checked ~ .nav__hamburger .nav__hamburger-line {
+        background-color: transparent;
+    }
+
+    .nav__checkbox:checked ~ .nav__hamburger .nav__hamburger-line::before {
+        top: 0;
+        transform: rotate(45deg);
+    }
+
+    .nav__checkbox:checked ~ .nav__hamburger .nav__hamburger-line::after {
+        top: 0;
+        transform: rotate(-45deg);
+    }
+
+    /* Посилання навігації на повну ширину */
+    .nav__link {
+        padding: 12px 16px;
+        border-bottom: 1px solid #0a2a4a;
+    }
+
+    /* Dropdown на мобільному — статичний */
+    .nav__dropdown {
+        position: static;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+        min-width: auto;
+        background-color: rgba(0, 18, 40, 0.7);
+    }
+
+    .nav__item--dropdown:hover > .nav__dropdown {
+        display: flex;
+    }
+
+    .nav__dropdown-link {
+        padding-left: 40px;
+    }
+
+    /* -- Основний контент -- */
+    main {
+        margin: 16px auto;
+        padding: 0 12px;
+    }
+
+    .section {
+        padding: 18px 16px;
+        margin-bottom: 18px;
+    }
+
+    header {
+        padding: 16px 16px;
+    }
+
+    header h1 {
+        font-size: 1.4em;
+    }
+
+    /* Пілоти — одна колонка */
+    .pilot__grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    /* Картки — одна колонка */
+    .cards__grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    /* Таблиця — прокрутка */
+    table {
+        display: block;
+        overflow-x: auto;
+    }
+
+    /* Галерея — 1 або 2 колонки */
+    .gallery {
+        grid-template-areas:
+            "title  title"
+            "photo1 photo2"
+            "photo3 photo4"
+            "photo5 photo6";
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    /* iframe адаптивність */
+    .media__iframe iframe {
+        height: 240px;
+    }
+
+    /* Фіксована кнопка — менший розмір на мобільних */
+    .support-btn {
+        padding: 10px 16px;
+        font-size: 0.78em;
+        bottom: 14px;
+        right: 14px;
+    }
+}
+
+/* ---- Маленькі мобільні (≤ 480px) ---- */
+@media (max-width: 480px) {
+
+    /* Галерея — одна колонка */
+    .gallery {
+        grid-template-areas:
+            "title"
+            "photo1"
+            "photo2"
+            "photo3"
+            "photo4"
+            "photo5"
+            "photo6";
+        grid-template-columns: 1fr;
+    }
+
+    header h1 {
+        font-size: 1.2em;
+    }
+
+    h2 {
+        font-size: 1.15em;
+    }
 }
