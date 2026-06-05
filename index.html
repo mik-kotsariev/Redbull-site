@@ -14,7 +14,11 @@
 <body id="top">
     <!-- Хедер -->
     <header>
-        <h1>Red Bull Racing</h1>
+        <div class="header__top-row">
+            <h1>Red Bull Racing</h1>
+            <!-- Блок 1, Завдання 4: Текстові годинники у шапці -->
+            <div class="header__clock" id="header-clock">00:00:00</div>
+        </div>
         <p>Інформаційний сайт про команду Формули-1 | Сезон 2026</p>
     </header>
 
@@ -46,8 +50,46 @@
         </ul>
     </nav>
 
+    <!-- Блок 1, Завдання 2: Іконка болида, що рухається по екрану -->
+    <img id="moving-car" class="js-moving-car" src="img/f1_icon.png" alt="Іконка болида F1" width="60" height="35">
+
+    <!-- Панель інструментів JS (кнопки) -->
+    <div class="js-toolbar">
+        <!-- Блок 2, Завдання 3: Кнопки зміни розміру тексту -->
+        <div class="js-toolbar__group">
+            <span class="js-toolbar__label">Розмір тексту:</span>
+            <button id="btn-font-minus" class="js-btn" title="Зменшити шрифт">A−</button>
+            <button id="btn-font-plus" class="js-btn" title="Збільшити шрифт">A+</button>
+        </div>
+        <!-- Блок 1, Завдання 3: Кнопка зміни шрифту абзаців -->
+        <button id="btn-change-font" class="js-btn">🔤 Змінити шрифт абзаців (15px)</button>
+        <!-- Блок 1, Завдання 5: Кнопка ефекту зникнення -->
+        <button id="btn-fade" class="js-btn">🌫️ Ефект зникнення тексту</button>
+    </div>
+
     <!-- Основний контент -->
     <main>
+        <!-- Блок 3, Завдання 2: Зворотний відлік до наступного Гран-прі -->
+        <section class="section countdown-section">
+            <h2>⏱️ Зворотний відлік</h2>
+            <p class="countdown__race-label">До старту: <strong id="countdown-label">Гран-прі Канади 2026</strong></p>
+            <div class="countdown" id="countdown-timer">
+                <!-- Значення заповнюються JavaScript -->
+            </div>
+        </section>
+
+        <!-- Блок 1, Завдання 1: Мотиваційна цитата Крістіана Хорнера -->
+        <section class="section js-quote-section">
+            <h2>💬 Слово керівника</h2>
+            <!-- Блок 1, Завдання 5: Цільовий блок для ефекту зникнення -->
+            <blockquote id="horner-quote" class="js-quote">
+                <!-- Текст вставляється через JavaScript -->
+            </blockquote>
+            <div id="fade-target" class="js-fade-target">
+                <p>Цей блок демонструє ефект плавного зникнення тексту. Натисніть кнопку «🌫️ Ефект зникнення тексту» у панелі інструментів вище, щоб побачити ефект у дії.</p>
+            </div>
+        </section>
+
         <!--історія-->
         <section class="section">
             <h2>Історія Red Bull Racing</h2>
@@ -55,7 +97,7 @@
             <p>Команду <strong>Red Bull Racing</strong> було засновано у 2005 році після придбання компанією
                 <u>Red Bull GmbH</u> команди Jaguar Racing. Штаб-квартира розташована у Мілтон-Кінсі, Великобританія.
             </p>
-            <p>Під керівництвом <strong>Крістіана Хорнера</strong> команда перетворилась на одну з домінуючих
+            <p>Під керівництвом <strong class="pilot-name" data-tooltip="<strong>Крістіан Хорнер</strong><br>Керівник команди Red Bull Racing">Крістіана Хорнера</strong> команда перетворилась на одну з домінуючих
                 сил у Формулі-1, здобувши безліч перемог та кілька чемпіонських титулів. У 2026 році команда
                 вступає в нову еру з оновленими технічними регламентами.</p>
         </section>
@@ -113,9 +155,10 @@
             </table>
         </section>
 
-        <!--новини-->
-        <section class="section">
-            <h2>Останні новини</h2>
+        <!-- Блок 3, Завдання 1: Ексклюзивний новинний блок (захист від копіювання) -->
+        <section class="section protected-section" id="protected-news">
+            <h2>🔒 Ексклюзивні новини</h2>
+            <span class="protected-badge">Захищено від копіювання</span>
 
             <article>
                 <h3>Red Bull представив новий болід RB22</h3>
@@ -131,6 +174,19 @@
                 <p>Макс Ферстаппен заявив в інтерв'ю, що його головна мета — здобути <em>п'ятий титул чемпіона
                         світу</em> та допомогти команді повернути Кубок конструкторів.</p>
             </article>
+        </section>
+
+        <!-- Блок 2, Завдання 4: Сортування пілотів -->
+        <section class="section">
+            <h2>📊 Рейтинг пілотів Red Bull</h2>
+            <p>Сортування масиву об'єктів пілотів за ім'ям або очками (функції <code>sortByName</code> та <code>sortByPoints</code>):</p>
+            <div class="js-sort-controls">
+                <button id="btn-sort-name" class="js-btn">Сортувати за ім'ям</button>
+                <button id="btn-sort-points" class="js-btn js-btn--active">Сортувати за очками</button>
+            </div>
+            <div id="sort-output">
+                <!-- Таблиця заповнюється JavaScript -->
+            </div>
         </section>
 
         <!--хронологія-->
@@ -178,15 +234,37 @@
             <a href="https://www.redbullracing.com" target="_blank" rel="noopener">Офіційний сайт Red Bull Racing ↗</a>
         </aside>
 
+        <!-- Блок 2, Завдання 2: Панель телеметрії -->
+        <div class="telemetry" id="telemetry">
+            <h4 class="telemetry__title">📡 Телеметрія</h4>
+            <div class="telemetry__data">
+                <div class="telemetry__row">
+                    <span class="telemetry__label">Курсор X:</span>
+                    <span class="telemetry__value" id="tel-mouse-x">0</span>
+                </div>
+                <div class="telemetry__row">
+                    <span class="telemetry__label">Курсор Y:</span>
+                    <span class="telemetry__value" id="tel-mouse-y">0</span>
+                </div>
+                <div class="telemetry__row">
+                    <span class="telemetry__label">Клавіша:</span>
+                    <span class="telemetry__value" id="tel-key">—</span>
+                </div>
+            </div>
+        </div>
+
     </main>
 
-    <!-- Фіксована кнопка «Підтримати команду» -->
+    <!-- Фіксована кнопка «Нагору» -->
     <a href="#" class="support-btn">⬆Нагору</a>
 
     <!-- Футер -->
     <footer>
         <p>&copy; 2026 Software Engineering NURE. Виконав: Коцарєв М. | ПЗПІ-25-3</p>
     </footer>
+
+    <!-- Підключення JavaScript -->
+    <script src="script.js"></script>
 
 </body>
 

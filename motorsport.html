@@ -14,7 +14,11 @@
 <body>
     <!-- Хедер -->
     <header>
-        <h1>Red Bull Racing</h1>
+        <div class="header__top-row">
+            <h1>Red Bull Racing</h1>
+            <!-- Блок 1, Завдання 4: Текстові годинники у шапці -->
+            <div class="header__clock" id="header-clock">00:00:00</div>
+        </div>
         <p>Філософія швидкості далеко за межами Формули-1</p>
     </header>
 
@@ -45,6 +49,19 @@
             </li>
         </ul>
     </nav>
+
+    <!-- Блок 1, Завдання 2: Іконка болида, що рухається по екрану -->
+    <img id="moving-car" class="js-moving-car" src="img/f1_icon.png" alt="Іконка болида F1" width="60" height="35">
+
+    <!-- Панель інструментів JS -->
+    <div class="js-toolbar">
+        <div class="js-toolbar__group">
+            <span class="js-toolbar__label">Розмір тексту:</span>
+            <button id="btn-font-minus" class="js-btn" title="Зменшити шрифт">A−</button>
+            <button id="btn-font-plus" class="js-btn" title="Збільшити шрифт">A+</button>
+        </div>
+        <button id="btn-change-font" class="js-btn">🔤 Змінити шрифт абзаців (15px)</button>
+    </div>
 
     <!-- Основний контент -->
     <main>
@@ -155,6 +172,25 @@
                 </form>
             </div>
         </section>
+
+        <!-- Блок 2, Завдання 2: Панель телеметрії -->
+        <div class="telemetry" id="telemetry">
+            <h4 class="telemetry__title">📡 Телеметрія</h4>
+            <div class="telemetry__data">
+                <div class="telemetry__row">
+                    <span class="telemetry__label">Курсор X:</span>
+                    <span class="telemetry__value" id="tel-mouse-x">0</span>
+                </div>
+                <div class="telemetry__row">
+                    <span class="telemetry__label">Курсор Y:</span>
+                    <span class="telemetry__value" id="tel-mouse-y">0</span>
+                </div>
+                <div class="telemetry__row">
+                    <span class="telemetry__label">Клавіша:</span>
+                    <span class="telemetry__value" id="tel-key">—</span>
+                </div>
+            </div>
+        </div>
     </main>
 
     <!-- Фіксована кнопка «Підтримати команду» -->
@@ -164,6 +200,9 @@
     <footer>
         <p>&copy; 2026 Software Engineering NURE. Виконав: Коцарєв М. | ПЗПІ-25-3</p>
     </footer>
+
+    <!-- Підключення JavaScript -->
+    <script src="script.js"></script>
 
 </body>
 
