@@ -16,7 +16,6 @@
     <header>
         <div class="header__top-row">
             <h1>Red Bull Racing</h1>
-            <!-- Блок 1, Завдання 4: Текстові годинники у шапці -->
             <div class="header__clock" id="header-clock">00:00:00</div>
         </div>
         <p>Інформаційний сайт про команду Формули-1 | Сезон 2026</p>
@@ -55,35 +54,27 @@
 
     <!-- Панель інструментів JS (кнопки) -->
     <div class="js-toolbar">
-        <!-- Блок 2, Завдання 3: Кнопки зміни розміру тексту -->
         <div class="js-toolbar__group">
             <span class="js-toolbar__label">Розмір тексту:</span>
             <button id="btn-font-minus" class="js-btn" title="Зменшити шрифт">A−</button>
             <button id="btn-font-plus" class="js-btn" title="Збільшити шрифт">A+</button>
         </div>
-        <!-- Блок 1, Завдання 3: Кнопка зміни шрифту абзаців -->
         <button id="btn-change-font" class="js-btn">🔤 Змінити шрифт абзаців (15px)</button>
-        <!-- Блок 1, Завдання 5: Кнопка ефекту зникнення -->
         <button id="btn-fade" class="js-btn">🌫️ Ефект зникнення тексту</button>
     </div>
 
     <!-- Основний контент -->
     <main>
-        <!-- Блок 3, Завдання 2: Зворотний відлік до наступного Гран-прі -->
         <section class="section countdown-section">
             <h2>⏱️ Зворотний відлік</h2>
             <p class="countdown__race-label">До старту: <strong id="countdown-label">Гран-прі Канади 2026</strong></p>
             <div class="countdown" id="countdown-timer">
-                <!-- Значення заповнюються JavaScript -->
             </div>
         </section>
 
-        <!-- Блок 1, Завдання 1: Мотиваційна цитата Крістіана Хорнера -->
         <section class="section js-quote-section">
             <h2>💬 Слово керівника</h2>
-            <!-- Блок 1, Завдання 5: Цільовий блок для ефекту зникнення -->
             <blockquote id="horner-quote" class="js-quote">
-                <!-- Текст вставляється через JavaScript -->
             </blockquote>
             <div id="fade-target" class="js-fade-target">
                 <p>Цей блок демонструє ефект плавного зникнення тексту. Натисніть кнопку «🌫️ Ефект зникнення тексту» у панелі інструментів вище, щоб побачити ефект у дії.</p>
@@ -155,7 +146,6 @@
             </table>
         </section>
 
-        <!-- Блок 3, Завдання 1: Ексклюзивний новинний блок (захист від копіювання) -->
         <section class="section protected-section" id="protected-news">
             <h2>🔒 Ексклюзивні новини</h2>
             <span class="protected-badge">Захищено від копіювання</span>
@@ -176,7 +166,6 @@
             </article>
         </section>
 
-        <!-- Блок 2, Завдання 4: Сортування пілотів -->
         <section class="section">
             <h2>📊 Рейтинг пілотів Red Bull</h2>
             <p>Сортування масиву об'єктів пілотів за ім'ям або очками (функції <code>sortByName</code> та <code>sortByPoints</code>):</p>
@@ -185,7 +174,6 @@
                 <button id="btn-sort-points" class="js-btn js-btn--active">Сортувати за очками</button>
             </div>
             <div id="sort-output">
-                <!-- Таблиця заповнюється JavaScript -->
             </div>
         </section>
 
@@ -234,7 +222,7 @@
             <a href="https://www.redbullracing.com" target="_blank" rel="noopener">Офіційний сайт Red Bull Racing ↗</a>
         </aside>
 
-        <!-- Блок 2, Завдання 2: Панель телеметрії -->
+        <!-- Панель телеметрії -->
         <div class="telemetry" id="telemetry">
             <h4 class="telemetry__title">📡 Телеметрія</h4>
             <div class="telemetry__data">
